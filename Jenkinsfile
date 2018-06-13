@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test API') {
             steps {
-                sh 'newman -c AutomateTestCreateUser.postman_collection.json -e dev.postman_environment.json'
+                sh 'newman --version'
             }
         }
     }
