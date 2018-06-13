@@ -1,0 +1,59 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AutomateTestCreateUser",
+		"_postman_id": "eef4350d-9de6-9327-4c9a-056a6eb2a0e4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "/v1/users : invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var body = JSON.parse(responseBody);",
+									"",
+									"var code = body.code;",
+									"tests[\"response code\"] = body.code === 502;",
+									"",
+									"tests[\"message should be Bad Gateway\"] = body.message === \"Bad Gateway\";",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api-url}}/v1/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customer_info\": {\n\t\"first_name\": \"Prakasit\",\n\t\"last_name\": \"Kitrakham 24\",\n\t\"email\": \"prakasit.aho+28@gmail.com\"\t\n\t},\n\t\"return_url\": \"http://www.google.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
