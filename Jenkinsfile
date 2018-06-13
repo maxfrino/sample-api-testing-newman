@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test API') {
             steps {
-                sh 'newman run /var/jenkins_home/postman/AutomateTestCreateUser.postman_collection.json  -e /var/jenkins_home/postman/tty-dev.postman_environment.json --insecure'
+                sh 'newman run AutomateTestCreateUser.postman_collection.json  -e dev.postman_environment.json --insecure'
             }
         }
     }
