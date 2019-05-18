@@ -1,13 +1,12 @@
 pipeline {
-    agent {
-        docker { image 'postman/newman_ubuntu1404:2.1.2' }
-    }
+    agent any
     stages {        
         stage('Initialize'){
             steps{
                 script {
                     def dockerHome = tool 'myDocker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    def nodejsHome  = tool 'myNodejs'
+                    env.PATH = "${dockerHome}/bin:${nodejsHome}/bin:${env.PATH}"
                 }
             }
         }
